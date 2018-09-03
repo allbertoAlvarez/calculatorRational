@@ -195,28 +195,28 @@ public class RationalNumber<T extends Number> implements IRationalNumber<Rationa
 		return denominator;
 	}
 
-	public static void main(String[] args) {
-
-		RationalNumber<Number> a = new RationalNumber<Number>(1, 2);
-		RationalNumber<Number> b = new RationalNumber<Number>(6, 4);
-		RationalNumber<Number> c = new RationalNumber<Number>(-13, 23);
-		RationalNumber<Number> d = new RationalNumber<Number>(-100, 28);
-		RationalNumber<Number> e = new RationalNumber<Number>(0, 1);
-
-		// b.divideRational(new RationalNumber<Number>(0, 1));
-
-		a.rationalInverse();
-		b.rationalInverse();
-		c.rationalInverse();
-		d.rationalInverse();
-		e.rationalInverse();
-
-		System.out.println(a.getNumerator() + "/" + a.getDenominator());
-		System.out.println(b.getNumerator() + "/" + b.getDenominator());
-
-		System.out.println(c.getNumerator() + "/" + c.getDenominator());
-		System.out.println(d.getNumerator() + "/" + d.getDenominator());
-		System.out.println(e.getNumerator() + "/" + e.getDenominator());
-
-	}
+	// public static void main(String[] args) {
+	//
+	// RationalNumber<Number> a = new RationalNumber<Number>(1, 2);
+	// RationalNumber<Number> b = new RationalNumber<Number>(6, 4);
+	// RationalNumber<Number> c = new RationalNumber<Number>(-13, 23);
+	// RationalNumber<Number> d = new RationalNumber<Number>(-100, 28);
+	// RationalNumber<Number> e = new RationalNumber<Number>(0, 1);
+	//
+	// // b.divideRational(new RationalNumber<Number>(0, 1));
+	//
+	// a.rationalInverse();
+	// b.rationalInverse();
+	// c.rationalInverse();
+	// d.rationalInverse();
+	// e.rationalInverse();
+	//
+	// System.out.println(a.getNumerator() + "/" + a.getDenominator());
+	// System.out.println(b.getNumerator() + "/" + b.getDenominator());
+	//
+	// System.out.println(c.getNumerator() + "/" + c.getDenominator());
+	// System.out.println(d.getNumerator() + "/" + d.getDenominator());
+	// System.out.println(e.getNumerator() + "/" + e.getDenominator());
+	//
+	// }
 }
