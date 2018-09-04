@@ -1,12 +1,17 @@
 package view;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import model.calculator;
 
-public class calculatorController {
+public class calculatorController implements Initializable {
 	@FXML
 	private TextField txtNum1;
 
@@ -17,6 +22,7 @@ public class calculatorController {
 	private TextField txtNumR;
 
 	@FXML
+
 	private TextField txtDen1;
 
 	@FXML
@@ -85,14 +91,20 @@ public class calculatorController {
 	@FXML
 	private Button btnClear;
 
-	private MainApp mainApp;
-
-	public calculatorController() {
-
-	}
+	private calculator calculator;
 
 	@FXML
 	void mouseClicked(MouseEvent event) {
+		btn0.setDisable(false);
+		btn1.setDisable(false);
+		btn2.setDisable(false);
+		btn3.setDisable(false);
+		btn4.setDisable(false);
+		btn5.setDisable(false);
+		btn6.setDisable(false);
+		btn7.setDisable(false);
+		btn8.setDisable(false);
+		btn9.setDisable(false);
 
 		if ((TextField) event.getSource() == txtNum1) {
 			txtNum1.setEditable(true);
@@ -112,19 +124,38 @@ public class calculatorController {
 		}
 
 		if ((TextField) event.getSource() == txtNum2) {
-			txtNum1.setEditable(false);
-			txtDen1.setEditable(false);
-			txtNum2.setEditable(true);
-			txtDen2.setEditable(false);
-			operation.setEditable(false);
+
+			if (operation.getText().equals("*") || operation.getText().equals("/") || operation.getText().equals("+")
+					|| operation.getText().equals("-")) {
+				txtNum1.setEditable(false);
+				txtDen1.setEditable(false);
+				txtNum2.setEditable(true);
+				txtDen2.setEditable(false);
+				operation.setEditable(false);
+			} else {
+				txtNum1.setEditable(false);
+				txtDen1.setEditable(false);
+				txtNum2.setEditable(false);
+				txtDen2.setEditable(false);
+				operation.setEditable(false);
+			}
 		}
 
 		if ((TextField) event.getSource() == txtDen2) {
-			txtNum1.setEditable(false);
-			txtDen1.setEditable(false);
-			txtNum2.setEditable(false);
-			txtDen2.setEditable(true);
-			operation.setEditable(false);
+			if (operation.getText().equals("*") || operation.getText().equals("/") || operation.getText().equals("+")
+					|| operation.getText().equals("-")) {
+				txtNum1.setEditable(false);
+				txtDen1.setEditable(false);
+				txtNum2.setEditable(false);
+				txtDen2.setEditable(true);
+				operation.setEditable(false);
+			} else {
+				txtNum1.setEditable(false);
+				txtDen1.setEditable(false);
+				txtNum2.setEditable(false);
+				txtDen2.setEditable(false);
+				operation.setEditable(false);
+			}
 		}
 
 		if ((TextField) event.getSource() == operation) {
@@ -133,6 +164,18 @@ public class calculatorController {
 			txtNum2.setEditable(false);
 			txtDen2.setEditable(false);
 			operation.setEditable(true);
+
+			btn0.setDisable(true);
+			btn1.setDisable(true);
+			btn2.setDisable(true);
+			btn3.setDisable(true);
+			btn4.setDisable(true);
+			btn5.setDisable(true);
+			btn6.setDisable(true);
+			btn7.setDisable(true);
+			btn8.setDisable(true);
+			btn9.setDisable(true);
+
 		}
 
 	}
@@ -157,6 +200,59 @@ public class calculatorController {
 
 	@FXML
 	void operation(ActionEvent event) {
+		if ((Button) event.getSource() == btnAdd) {
+			write("+");
+		}
+		if ((Button) event.getSource() == btnClear) {
+			// write("+");
+		}
+		if ((Button) event.getSource() == btnDiv) {
+			write("÷");
+		}
+		if ((Button) event.getSource() == btnMul) {
+			write("x");
+		}
+		if ((Button) event.getSource() == btnIn) {
+			write("x⁻¹");
+		}
+		if ((Button) event.getSource() == btnSq) {
+			write("x²");
+		}
+		if ((Button) event.getSource() == btnSim) {
+			write("sim");
+		}
+		if ((Button) event.getSource() == btnEq) {
+
+			if (operation.getText().equals("+")) {
+				calculator.add(Long.parseLong(txtNum1.getText()), Long.parseLong(txtDen1.getText()),
+						Long.parseLong(txtNum2.getText()), Long.parseLong(txtDen2.getText()));
+				txtNumR.setText(calculator.getNumber1().getNumerator() + "");
+				txtDenR.setText(calculator.getNumber1().getDenominator() + "");
+
+			}
+
+			if (operation.getText().equals("-")) {
+
+			}
+			if (operation.getText().equals("x")) {
+
+			}
+			if (operation.getText().equals("/")) {
+
+			}
+			if (operation.getText().equals("x⁻¹")) {
+
+			}
+
+		}
+	}
+
+	public void operation() {
+
+	}
+
+	@FXML
+	void number(ActionEvent event) {
 
 		if ((Button) event.getSource() == btn0) {
 			write(0 + "");
@@ -188,6 +284,12 @@ public class calculatorController {
 		if ((Button) event.getSource() == btn9) {
 			write(9 + "");
 		}
+
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		this.calculator = new calculator();
 
 	}
 

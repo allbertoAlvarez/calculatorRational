@@ -8,13 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import model.calculator;
 
 public class MainApp extends Application {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
-	private calculator calculator;
 
 	@Override
 	public void start(Stage primaryStage) {
