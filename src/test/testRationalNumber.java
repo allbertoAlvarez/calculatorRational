@@ -26,7 +26,7 @@ public class testRationalNumber extends TestCase {
 		setUpEscenario1();
 		a.divideRational(b);
 
-		// b.divideRational(new RationalNumber<Number>(0, 1));
+		b.divideRational(new RationalNumber<Number>(0, 1));
 
 		boolean prueba = true;
 		prueba = prueba && (a.getNumerator().intValue() == 1 && a.getDenominator().intValue() == 3);

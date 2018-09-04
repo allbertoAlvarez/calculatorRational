@@ -100,11 +100,11 @@ public class RationalNumber<T extends Number> implements IRationalNumber<Rationa
 	public void invariante(T denominator) {
 
 		if (denominator.longValue() != 0) {
+
 			this.denominator = denominator;
 		} else {
 
 			System.out.println("error");
-			// throw new NumberFormatException();
 		}
 
 	}
@@ -129,7 +129,9 @@ public class RationalNumber<T extends Number> implements IRationalNumber<Rationa
 	public void addRational(RationalNumber<T> rationalToBeAdded) {
 		numerator = add(multiplicy(numerator, rationalToBeAdded.getDenominator()),
 				multiplicy(denominator, rationalToBeAdded.getNumerator()), true);
+
 		invariante(multiplicy(denominator, rationalToBeAdded.getDenominator()));
+
 		simplifyRational();
 	}
 
@@ -137,14 +139,18 @@ public class RationalNumber<T extends Number> implements IRationalNumber<Rationa
 	public void substractRational(RationalNumber<T> rationalToBeSubstracted) {
 		numerator = add(multiplicy(numerator, rationalToBeSubstracted.getDenominator()),
 				multiplicy(denominator, rationalToBeSubstracted.getNumerator()), false);
+
 		invariante(multiplicy(denominator, rationalToBeSubstracted.getDenominator()));
+
 		simplifyRational();
 	}
 
 	@Override
 	public void multiplyRational(RationalNumber<T> rationalFactor) {
 		numerator = multiplicy(numerator, rationalFactor.getNumerator());
+
 		invariante(multiplicy(denominator, rationalFactor.getDenominator()));
+
 		simplifyRational();
 	}
 
@@ -152,6 +158,7 @@ public class RationalNumber<T extends Number> implements IRationalNumber<Rationa
 	public void divideRational(RationalNumber<T> rationalQuocient) {
 
 		numerator = multiplicy(numerator, rationalQuocient.denominator);
+
 		invariante(multiplicy(denominator, rationalQuocient.numerator));
 
 		simplifyRational();
@@ -163,6 +170,7 @@ public class RationalNumber<T extends Number> implements IRationalNumber<Rationa
 		T mcd = mcd(numerator, denominator);
 
 		numerator = divide(numerator, mcd);
+
 		invariante(divide(denominator, mcd));
 
 	}
@@ -173,7 +181,9 @@ public class RationalNumber<T extends Number> implements IRationalNumber<Rationa
 		if (numerator.longValue() != 0) {
 			Long temp = numerator.longValue();
 			numerator = denominator;
+
 			invariante((T) temp);
+
 		}
 		simplifyRational();
 	}
@@ -181,7 +191,9 @@ public class RationalNumber<T extends Number> implements IRationalNumber<Rationa
 	@Override
 	public void squaredRational() {
 		numerator = multiplicy(numerator, numerator);
+
 		invariante(multiplicy(denominator, denominator));
+
 		simplifyRational();
 	}
 
@@ -195,28 +207,4 @@ public class RationalNumber<T extends Number> implements IRationalNumber<Rationa
 		return denominator;
 	}
 
-	// public static void main(String[] args) {
-	//
-	// RationalNumber<Number> a = new RationalNumber<Number>(1, 2);
-	// RationalNumber<Number> b = new RationalNumber<Number>(6, 4);
-	// RationalNumber<Number> c = new RationalNumber<Number>(-13, 23);
-	// RationalNumber<Number> d = new RationalNumber<Number>(-100, 28);
-	// RationalNumber<Number> e = new RationalNumber<Number>(0, 1);
-	//
-	// // b.divideRational(new RationalNumber<Number>(0, 1));
-	//
-	// a.rationalInverse();
-	// b.rationalInverse();
-	// c.rationalInverse();
-	// d.rationalInverse();
-	// e.rationalInverse();
-	//
-	// System.out.println(a.getNumerator() + "/" + a.getDenominator());
-	// System.out.println(b.getNumerator() + "/" + b.getDenominator());
-	//
-	// System.out.println(c.getNumerator() + "/" + c.getDenominator());
-	// System.out.println(d.getNumerator() + "/" + d.getDenominator());
-	// System.out.println(e.getNumerator() + "/" + e.getDenominator());
-	//
-	// }
 }

@@ -113,6 +113,14 @@ public class calculatorController implements Initializable {
 			txtDen2.setEditable(false);
 			operation.setEditable(false);
 
+			btnAdd.setDisable(true);
+			btnSub.setDisable(true);
+			btnDiv.setDisable(true);
+			btnMul.setDisable(true);
+			btnIn.setDisable(true);
+			btnSim.setDisable(true);
+			btnSq.setDisable(true);
+
 		}
 
 		if ((TextField) event.getSource() == txtDen1) {
@@ -121,6 +129,14 @@ public class calculatorController implements Initializable {
 			txtNum2.setEditable(false);
 			txtDen2.setEditable(false);
 			operation.setEditable(false);
+
+			btnAdd.setDisable(true);
+			btnSub.setDisable(true);
+			btnDiv.setDisable(true);
+			btnMul.setDisable(true);
+			btnIn.setDisable(true);
+			btnSim.setDisable(true);
+			btnSq.setDisable(true);
 		}
 
 		if ((TextField) event.getSource() == txtNum2) {
@@ -139,6 +155,14 @@ public class calculatorController implements Initializable {
 				txtDen2.setEditable(false);
 				operation.setEditable(false);
 			}
+
+			btnAdd.setDisable(true);
+			btnSub.setDisable(true);
+			btnDiv.setDisable(true);
+			btnMul.setDisable(true);
+			btnIn.setDisable(true);
+			btnSim.setDisable(true);
+			btnSq.setDisable(true);
 		}
 
 		if ((TextField) event.getSource() == txtDen2) {
@@ -156,9 +180,27 @@ public class calculatorController implements Initializable {
 				txtDen2.setEditable(false);
 				operation.setEditable(false);
 			}
+
+			btnAdd.setDisable(true);
+			btnSub.setDisable(true);
+			btnDiv.setDisable(true);
+			btnMul.setDisable(true);
+			btnIn.setDisable(true);
+			btnSim.setDisable(true);
+			btnSq.setDisable(true);
 		}
 
 		if ((TextField) event.getSource() == operation) {
+
+			btnAdd.setDisable(false);
+			btnSub.setDisable(false);
+			btnDiv.setDisable(false);
+			btnMul.setDisable(false);
+
+			btnIn.setDisable(false);
+			btnSim.setDisable(false);
+			btnSq.setDisable(false);
+
 			txtNum1.setEditable(false);
 			txtDen1.setEditable(false);
 			txtNum2.setEditable(false);
@@ -203,8 +245,8 @@ public class calculatorController implements Initializable {
 		if ((Button) event.getSource() == btnAdd) {
 			write("+");
 		}
-		if ((Button) event.getSource() == btnClear) {
-			// write("+");
+		if ((Button) event.getSource() == btnSub) {
+			write("-");
 		}
 		if ((Button) event.getSource() == btnDiv) {
 			write("÷");
@@ -224,31 +266,51 @@ public class calculatorController implements Initializable {
 		if ((Button) event.getSource() == btnEq) {
 
 			if (operation.getText().equals("+")) {
+
 				calculator.add(Long.parseLong(txtNum1.getText()), Long.parseLong(txtDen1.getText()),
 						Long.parseLong(txtNum2.getText()), Long.parseLong(txtDen2.getText()));
 				txtNumR.setText(calculator.getNumber1().getNumerator() + "");
 				txtDenR.setText(calculator.getNumber1().getDenominator() + "");
-
 			}
 
 			if (operation.getText().equals("-")) {
-
+				calculator.substract(Long.parseLong(txtNum1.getText()), Long.parseLong(txtDen1.getText()),
+						Long.parseLong(txtNum2.getText()), Long.parseLong(txtDen2.getText()));
+				txtNumR.setText(calculator.getNumber1().getNumerator() + "");
+				txtDenR.setText(calculator.getNumber1().getDenominator() + "");
 			}
 			if (operation.getText().equals("x")) {
-
+				calculator.multiply(Long.parseLong(txtNum1.getText()), Long.parseLong(txtDen1.getText()),
+						Long.parseLong(txtNum2.getText()), Long.parseLong(txtDen2.getText()));
+				txtNumR.setText(calculator.getNumber1().getNumerator() + "");
+				txtDenR.setText(calculator.getNumber1().getDenominator() + "");
 			}
 			if (operation.getText().equals("/")) {
-
+				calculator.divide(Long.parseLong(txtNum1.getText()), Long.parseLong(txtDen1.getText()),
+						Long.parseLong(txtNum2.getText()), Long.parseLong(txtDen2.getText()));
+				txtNumR.setText(calculator.getNumber1().getNumerator() + "");
+				txtDenR.setText(calculator.getNumber1().getDenominator() + "");
 			}
 			if (operation.getText().equals("x⁻¹")) {
-
+				calculator.Inverse(Long.parseLong(txtNum1.getText()), Long.parseLong(txtDen1.getText()));
+				txtNumR.setText(calculator.getNumber1().getNumerator() + "");
+				txtDenR.setText(calculator.getNumber1().getDenominator() + "");
 			}
-
+			if (operation.getText().equals("x²")) {
+				calculator.squared(Long.parseLong(txtNum1.getText()), Long.parseLong(txtDen1.getText()));
+				txtNumR.setText(calculator.getNumber1().getNumerator() + "");
+				txtDenR.setText(calculator.getNumber1().getDenominator() + "");
+			}
 		}
-	}
-
-	public void operation() {
-
+		if ((Button) event.getSource() == btnClear) {
+			txtNum1.clear();
+			txtDen1.clear();
+			txtNum2.clear();
+			txtDen2.clear();
+			txtNumR.clear();
+			txtDenR.clear();
+			operation.clear();
+		}
 	}
 
 	@FXML
